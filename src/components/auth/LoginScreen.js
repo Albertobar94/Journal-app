@@ -34,14 +34,14 @@ export const LoginScreen = () => {
                     name="email"
                     className="auth__input"
                     value={ email }
-                    onClick={ handleInputChange }
+                    onChange={ handleInputChange }
                 />
                 <input type="password"
                     placeholder="password"
                     name="password"
                     className="auth__input"
                     value={ password }
-                    onClick={ handleInputChange }
+                    onChange={ handleInputChange }
                 />
 
                 <button 
