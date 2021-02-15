@@ -82,7 +82,8 @@ export const RegisterScreen = () => {
                     value={ password2 }
                     onChange={ handleInputChange }
                 />
-
+                <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                <br/>
                 <button 
                     type="submit"
                     className="btn btn-primary btn-block mb-5"

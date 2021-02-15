@@ -19,13 +19,11 @@ export const uiReducer = ( state = initialState, action ) => {
                 msgError: null
             };
         case types.uiFinishLoading:
-                console.log('finish loading')
                 return {
                     ...state,
                     loading: false
                 };
         case types.uiStartLoading:
-            console.log('start loading')
             return {
                 ...state,
                 loading: true

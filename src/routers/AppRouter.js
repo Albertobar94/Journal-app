@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
     const dispatch = useDispatch();
@@ -15,11 +16,11 @@ export const AppRouter = () => {
 
     // Observable que se ejecuta preguntando por las credenciales del usuario
     useEffect(() => {
-        firebase.auth().onAuthStateChanged( (user) => {
-            console.log('user', user?.uid)
+        firebase.auth().onAuthStateChanged( async(user) => {
             if ( user?.uid ) {
                 dispatch( login( user.uid, user.displayName ) )
                 setIsLoggedIn( true )
+                dispatch( startLoadingNotes( user.uid ))
             } else {
                 setIsLoggedIn( false )
             }
@@ -27,7 +28,6 @@ export const AppRouter = () => {
         });
 
     }, [dispatch, setChecking, setIsLoggedIn])
-    console.log('ckecking', checking)
     if ( checking ) {
         return (
             <h1>Loading...</h1>

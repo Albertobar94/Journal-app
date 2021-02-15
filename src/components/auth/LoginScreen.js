@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export const LoginScreen = () => {
     const dispatch = useDispatch();
     const { loading } = useSelector( state => state.ui )
-    console.log('state', loading)
     const initialForm = {
         email: 'nando@gmail.com',
         password: '123456'
@@ -47,7 +46,8 @@ export const LoginScreen = () => {
                     value={ password }
                     onChange={ handleInputChange }
                 />
-
+                <div className="g-recaptcha" data-sitekey="localhost"></div>
+                <br/>
                 <button 
                     type="submit"
                     className="btn btn-primary btn-block"
